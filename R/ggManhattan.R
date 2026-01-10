@@ -176,13 +176,15 @@ ggManhattan <- function(df, graph.title = "", chrom.lab = NULL,
     g <- g +
       geom_polygon(data = polygon.df,aes(x=x,y=y), fill = back.panels.col)
   }
-  g <- g +
-    geom_point(aes(x=plot_BP, y=-log10(P), color = as.factor(CHR)), size = point.size)
   if (!is.null(significance)){
     if (is.numeric(significance)){
+      g <- g +
+        geom_point(aes(x=plot_BP, y=-log10(P), color = as.factor(CHR)), size = point.size)
       genomewideline <- significance
       suggestiveline <- genomewideline / 0.005
     } else if (significance == "Bonferroni"){
+      g <- g +
+        geom_point(aes(x=plot_BP, y=-log10(P), color = as.factor(CHR)), size = point.size)
       BFlevel <- 0.05 / length(df$SNP)
       cat("Bonferroni correction significance level:", BFlevel, "\n")
       genomewideline <- BFlevel
@@ -192,8 +194,8 @@ ggManhattan <- function(df, graph.title = "", chrom.lab = NULL,
       genomewideline <- 0.05
       suggestiveline <- FALSE
       y.title <- expression(-log[10](italic(q)))
-      g <- ggplot(df) +
-        geom_point(aes(x=plot_BP, y=-log10(P), color = as.factor(CHR)), size = point.size)
+      g <- g +
+        geom_point(data = df, aes(x=plot_BP, y=-log10(fdr), color = as.factor(CHR)), size = point.size)
       if (!is.null(highlight)) {
         if (is.numeric(highlight)){
           highlight <- as.character(df$SNP[df$P < highlight])
@@ -202,7 +204,7 @@ ggManhattan <- function(df, graph.title = "", chrom.lab = NULL,
           warning("Cannot highlight SNPs not present in the dataset. Argument is ignored.")
         } else {
           g <- g + geom_point(data = df[which(df$SNP %in% highlight), ],
-                              aes(BP, -log10(fdr), group=SNP, colour=SNP),
+                              aes(plot_BP, -log10(fdr), group=SNP, colour=SNP),
                               color = highlight.col, size = point.size)
           highlight <- NULL
           y.max <- floor(max(-log10(df$fdr))) + 1
@@ -216,6 +218,9 @@ ggManhattan <- function(df, graph.title = "", chrom.lab = NULL,
         }
       }
     }
+  } else {
+    g <- g +
+      geom_point(aes(x=plot_BP, y=-log10(P), color = as.factor(CHR)), size = point.size)
   }
   g <- g +
     scale_colour_manual(values = chrom.col) +
