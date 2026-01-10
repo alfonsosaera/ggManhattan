@@ -264,3 +264,29 @@ mM + ylab(expression("Association to Phenotype (" * -log[10](italic(p)) *")"))
 ```
 
 ![](img_files/figure-markdown_github/unnamed-chunk-19-1.png)
+
+Chromosome names
+=====================
+
+As can be seen in the examples, the function tries to hide the overlapping chromosome names. If you do not like the results, you can turn it off setting `auto.hide.labels` to `FALSE` 
+
+``` r
+ggManhattan(gwas_example, graph.title = "My Manhattan Plot",
+            auto.hide.labels = FALSE) + 
+  ylab(expression("Association to Phenotype (" * -log[10](italic(p)) *")"))
+```
+
+![](img_files/figure-markdown_github/unnamed-chunk-20-1.png)
+
+and pass the chromosome names with empty labels ("") as desired.
+
+``` r
+ggManhattan(gwas_example, graph.title = "My Manhattan Plot",
+            auto.hide.labels = FALSE, chrom.lab = c(as.character(1:22),"X","Y","MT")) + 
+  ylab(expression("Association to Phenotype (" * -log[10](italic(p)) *")"))
+```
+
+![](img_files/figure-markdown_github/unnamed-chunk-21-1.png)
+
+
+
