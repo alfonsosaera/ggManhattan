@@ -193,7 +193,7 @@ ggManhattan <- function(df, graph.title = "", chrom.lab = NULL,
       suggestiveline <- FALSE
       y.title <- expression(-log[10](italic(q)))
       g <- ggplot(df) +
-        geom_point(aes(BP, -log10(fdr), colour = as.factor(CHR)), size = point.size)
+        geom_point(aes(x=plot_BP, y=-log10(P), color = as.factor(CHR)), size = point.size)
       if (!is.null(highlight)) {
         if (is.numeric(highlight)){
           highlight <- as.character(df$SNP[df$P < highlight])
