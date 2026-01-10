@@ -1,0 +1,21 @@
+Package: ggManhattan
+Type: Package
+Title: Manhattan Plots with ggplot2
+Version: 1.0.0
+Author: Alfonso Saera Vila
+Maintainer: Alfonso Saera Vila <alfonso.saera@example.com>
+Description: Create Manhattan plots for genome-wide association studies (GWAS)
+    using ggplot2. Features include customizable significance lines, SNP
+    highlighting, automatic hiding of overlapping chromosome labels, and
+    multiple significance correction methods (Bonferroni, FDR).
+Depends: R (>= 3.5.0)
+Imports:
+    ggplot2,
+    dplyr,
+    tidyr,
+    ggrepel,
+    stats
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2

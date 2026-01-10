@@ -1,0 +1,10 @@
+# R
+.Rhistory
+.Rdata
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Package build
+*.tar.gz
+*.Rcheck/
