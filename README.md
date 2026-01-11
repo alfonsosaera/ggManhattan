@@ -12,6 +12,7 @@ Manhattan plots with ggplot2
     -   [Graph appearance](#graph-appearance)
     -   [Significance level](#significance-level)
 -   [Further customization](#further-customization)
+-   [Chromosome names](#chromosome-names)
 
 An R package to generate Manhattan plots using `ggplot2`. It also returns a list of significant SNPs, according to different thresholds, if desired.
 
