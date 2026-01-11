@@ -282,7 +282,7 @@ and pass the chromosome names with empty labels ("") as desired.
 
 ``` r
 ggManhattan(gwas_example, graph.title = "My Manhattan Plot",
-            auto.hide.labels = FALSE, chrom.lab = c(as.character(1:22),"X","Y","MT")) + 
+            auto.hide.labels = FALSE, chrom.lab = c(as.character(1:18),"", 20,"", 22,"X","","MT")) + 
   ylab(expression("Association to Phenotype (" * -log[10](italic(p)) *")"))
 ```
 
